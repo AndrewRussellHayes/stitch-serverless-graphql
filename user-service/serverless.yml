@@ -1,0 +1,20 @@
+service: user-service
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  stage: development
+functions:
+  graphql:
+    handler: handler.graphql
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+  graphiql:
+    handler: handler.graphiql
+    events:
+      - http:
+          path: graphiql
+          method: get
